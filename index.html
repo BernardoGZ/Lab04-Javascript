@@ -6,6 +6,7 @@
   <title>Todo</title>
   <link rel="stylesheet" href="css/styles.css" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
 </head>
   <body>
     <header class="navbar navbar-default">
@@ -26,7 +27,7 @@
               <div class="panel-body">
                 <form class="todoForm">
                   <fieldset>
-                    <textarea class="newTodo form-control"></textarea>
+                    <textarea id="todoText" class="newTodo form-control"></textarea>
                     <button type="submit" class="submitButton"> 
                       Post Todo
                     </button>
@@ -40,8 +41,8 @@
               <div class="panel-heading">
                 <h3>List of todo's</h3>
               </div>
-              <div class="panel-body" class="listOfTodos">
-
+              <div id="listTodos" class="panel-body" class="listOfTodos">
+                  <p><input type="checkbox"> opcion 1 </p>
               </div>
               <div class="buttons">
                 <button class="clearButton btn-info"> 
@@ -62,5 +63,11 @@
     <footer role="footer" class="footer">
       Todo list application
     </footer>
+
+
+    <script src="js/app.js"></script>
+    
   </body>
+
+  
 </html>
