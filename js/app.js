@@ -2,40 +2,55 @@
 //A00570682
 //Laboratory #4: To Do List, 1st practice of Javascript basic functions
 
-var todoBtn = document.querySelector('.submitButton');
-var todoAreaText = document.querySelector('#todoText');
+//Declare variables for buttons and managing areas
+var btnPost = document.querySelector('.submitButton');
+var btnClear = document.querySelector('.clearButton');
+var btnMark = document.querySelector('.markAllButton');
+var btnDelete = document.querySelector('.deleteButton');
 
+var todoAreaText = document.querySelector('#todoText');
+var todoList = document.querySelector('#listTodos');
+var allTodos;
 var todoText;
 var i = 0;
 
-function agregTodo(text, cont){
-    // alert(text + cont);
-    
-    //Create paragraph and input
-    var ptemp =  document.createElement('p');
-    var chtemp = document.createElement('input');
-    
-    //Set input and paragraph attributes. 
-    ptemp.setAttribute("id", "toDo#" + cont);
-    ptemp.innerHTML = text;
-    chtemp.setAttribute("type", "checkbox");
 
-    // alert(ptemp.getAttribute("id")+ ptemp.innerHTML + chtemp.getAttribute("type"));
+//Events on buttons
+btnPost.addEventListener("click", postTodo);
+btnClear.addEventListener("click", clearTodo);
+btnMark.addEventListener("click", markTodo);
+btnDelete.addEventListener("click", deleteTodo);
 
-    //paragraph appended to the list, checkbox appended to paragrap
-    document.querySelector("#listTodos").appendChild(ptemp);
-    // document.querySelector("#toDo#" + cont).appendChild(chtemp);
-    
+
+//Functions
+
+function postTodo(e){
+    e.preventDefault();
+    todoText = todoAreaText.value;
+    todoList.innerHTML = todoList.innerHTML + '<p> <input type="checkbox" class="todos"> ' + todoText + "</p>" ;  
+    todoAreaText.value = null;
 }
 
+function clearTodo(e){
+    e.preventDefault();
+    allTodos = document.querySelectorAll('.todos');    
+    for (let i = 0; i < allTodos.length; i++) {
+        allTodos[i].checked = false;        
+    }    
+}
 
-todoBtn.addEventListener('click', function(){
-    todoText = todoAreaText.value;
-    // alert(todoText);
-    agregTodo(todoText, i);
-})
+function markTodo(e){
+    e.preventDefault();
+    allTodos = document.querySelectorAll('.todos');    
+    for (let i = 0; i < allTodos.length; i++) {
+        allTodos[i].checked = true;        
+    }    
+}
 
-// agregTodo(todoText, i);
+function deleteTodo(e) {
+    e.preventDefault();
+    todoList.innerHTML = null;
+}
 
     
 
